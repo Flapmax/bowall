@@ -17,7 +17,7 @@ Success = vlc.MediaPlayer("bowall/Success.wav")
 Celebration = vlc.MediaPlayer("bowall/Celebration.wav")
 
 # set the GPIO input pins
-pad0_pin = board.D22
+pad0_pin = board.D4
 
 pad0 = DigitalInOut(pad0_pin)
 
