@@ -11,10 +11,10 @@ result = firebase.get('/checkValue','checkID')
 print(result)
 
 #importing the Sounds
-location = vlc.MediaPlayer("bowall/Localistation.wav")
-Error = vlc.MediaPlayer("bowall/Error.wav")
-Success = vlc.MediaPlayer("bowall/Success.wav")
-Celebration = vlc.MediaPlayer("bowall/Celebration.wav")
+location = vlc.MediaPlayer("bLocalistation.wav")
+Error = vlc.MediaPlayer("Error.wav")
+Success = vlc.MediaPlayer("Success.wav")
+Celebration = vlc.MediaPlayer("Celebration.wav")
 
 # set the GPIO input pins
 pad0_pin = board.D4
