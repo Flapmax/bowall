@@ -1,14 +1,20 @@
-#MaxPi 1
+#MaxPi 2
 import time
 import board
 from digitalio import DigitalInOut, Direction
-import RPi.GPIO as GPIO
-import os
+import vlc
 from firebase import firebase
 
+#calling firebase getting the ID and printing the result
 firebase = firebase.FirebaseApplication('https://bowall.firebaseio.com/')
 result = firebase.get('/checkValue','checkID')
 print(result)
+
+#importing the Sounds
+location = vlc.MediaPlayer("bowall/Localistation.wav")
+Error = vlc.MediaPlayer("bowall/Error.wav")
+Success = vlc.MediaPlayer("bowall/Success.wav")
+Celebration = vlc.MediaPlayer("bowall/Celebration.wav")
 
 # set the GPIO input pins
 pad0_pin = board.D22
@@ -24,9 +30,10 @@ while True:
 
 
     if pad0.value and not pad0_already_pressed:
-        os.system('omxplayer geschafft.wav &')
-        print("Pad 1 pressed and LED ON")
-        GPIO.output(26,GPIO.HIGH)
+        #playing the sound on touch
+        Success.play()
+        print("Pad 0 Pressed")
+        #Changing the ID to 1
         post = firebase.patch('/checkValue',{'checkID': 1})
     pad0_already_pressed = pad0.value
 
