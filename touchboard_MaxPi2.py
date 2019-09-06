@@ -11,7 +11,7 @@ result = firebase.get('/checkValue','checkID')
 print(result)
 
 #importing the Sounds
-location = vlc.MediaPlayer("bLocalistation.wav")
+location = vlc.MediaPlayer("Localistation.wav")
 Error = vlc.MediaPlayer("Error.wav")
 Success = vlc.MediaPlayer("Success.wav")
 Celebration = vlc.MediaPlayer("Celebration.wav")
