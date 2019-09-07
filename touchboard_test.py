@@ -47,6 +47,8 @@ def main():
 
             result = firebase.get('/checkValue', 'checkID')
 
+            main()
+
     if restart == 1:
         print("looping")
         main()
