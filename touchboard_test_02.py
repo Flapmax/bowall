@@ -2,12 +2,18 @@
 restart = 1
 
 def main():
+
     # Test Code
     import time
     import board
     from digitalio import DigitalInOut, Direction
     import vlc
     from firebase import firebase
+
+    # calling firebase getting the ID and printing the result
+    firebase = firebase.FirebaseApplication('https://bowall.firebaseio.com/')
+    result = firebase.get('/checkValue', 'checkID')
+    print(result)
 
     # importing the Sounds
     location = vlc.MediaPlayer("Localistation.wav")
@@ -24,11 +30,8 @@ def main():
 
     pad0_already_pressed = True
 
-    def inner_main():
-        # calling firebase getting the ID and printing the result
-        firebase = firebase.FirebaseApplication('https://bowall.firebaseio.com/')
-        result = firebase.get('/checkValue', 'checkID')
-        print(result)
+    while restart == 1:
+        global result
 
         if result == 1:
             location.play()
@@ -43,20 +46,8 @@ def main():
                     post = firebase.patch('/checkValue', {'checkID': 2})
                 pad0_already_pressed = pad0.value
 
+                result = firebase.get('/checkValue', 'checkID')
 
-                time.sleep(0.1)
-
-                global result = firebase.get('/checkValue', 'checkID')
-                global restart = 1
-
-
-
-        if global restart == 1:
-            print("looping")
-            global restart = 0
-            inner_main()
-
-    inner_main();
 main();
 
 
