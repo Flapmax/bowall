@@ -1,8 +1,8 @@
  # Test Code
-    import time
     import board
     from digitalio import DigitalInOut, Direction
     import vlc
+    import time
     from firebase import firebase
     
       # importing the Sounds
