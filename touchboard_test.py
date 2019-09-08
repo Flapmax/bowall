@@ -45,11 +45,9 @@ def main():
 
             time.sleep(0.1)
 
-            result = firebase.get('/checkValue', 'checkID')
+    result = firebase.get('/checkValue', 'checkID')
 
-            main()
-
-    if restart == 1:
+    if restart == 1 or 2 or 3 or 4 or 5:
         print("looping")
         main()
 
