@@ -1,21 +1,19 @@
-# Test Code
-import board
-from digitalio import DigitalInOut, Direction
-import vlc
-import time
-from firebase import firebase
-    
-# importing the Sounds
-location = vlc.MediaPlayer("Localistation.wav")
-Error = vlc.MediaPlayer("Error.wav")
-Success = vlc.MediaPlayer("Success.wav")
-Celebration = vlc.MediaPlayer("Celebration.wav")
-    
-#restart als variable
-restart = 1
-    
 def main():
-  
+    # Test Code
+    import board
+    from digitalio import DigitalInOut, Direction
+    import vlc
+    import time
+    from firebase import firebase
+
+    # importing the Sounds
+    location = vlc.MediaPlayer("Localistation.wav")
+    Error = vlc.MediaPlayer("Error.wav")
+    Success = vlc.MediaPlayer("Success.wav")
+    Celebration = vlc.MediaPlayer("Celebration.wav")
+
+    #restart als variable
+    restart = 1
 
     # calling firebase getting the ID and printing the result
     firebase = firebase.FirebaseApplication('https://bowall.firebaseio.com/')
