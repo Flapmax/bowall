@@ -29,14 +29,14 @@ pad0_already_pressed = True
 
 
 def main():
+    global restart
     global result
+    global pad0_already_pressed
 
     if result == 1:
         location.play()
 
         while True:
-            global pad0
-            global pad0_already_pressed
 
             if pad0.value and not pad0_already_pressed:
                 # playing the sound on touch
@@ -44,10 +44,18 @@ def main():
                 print("Pad 0 Pressed")
                 # Changing the ID to 1
                 post = firebase.patch('/checkValue', {'checkID': 2})
-                pad0_already_pressed = pad0.value
+            pad0_already_pressed = pad0.value
 
-                result = firebase.get('/checkValue', 'checkID')
+            time.sleep(0.1)
 
+            result = firebase.get('/checkValue', 'checkID')
 
-while True:
-    main()
+            if restart == 1:
+                print("looping")
+                main()
+
+    if restart == 1:
+        print("looping")
+        main()
+
+main()
