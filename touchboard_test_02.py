@@ -46,7 +46,7 @@ def main():
 
                 time.sleep(0.1)
 
-                result = firebase.get('/checkValue', 'checkID')
+                global result = firebase.get('/checkValue', 'checkID')
 
 
 
