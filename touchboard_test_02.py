@@ -29,7 +29,7 @@ def main():
 
     pad0_already_pressed = True
 
-    def touchboard():
+    def inner_main():
         if result == 1:
             location.play()
 
@@ -54,7 +54,7 @@ def main():
             print("looping")
             function()
 
-touchboard();
+    inner_main();
 main();
 
 
