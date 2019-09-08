@@ -1,3 +1,6 @@
+# restart als variable
+restart = 1
+
 def main():
     # Test Code
     import time
@@ -5,14 +8,6 @@ def main():
     from digitalio import DigitalInOut, Direction
     import vlc
     from firebase import firebase
-
-    # calling firebase getting the ID and printing the result
-    firebase = firebase.FirebaseApplication('https://bowall.firebaseio.com/')
-    result = firebase.get('/checkValue', 'checkID')
-    print(result)
-
-    #restart als variable
-    restart = 1
 
     # importing the Sounds
     location = vlc.MediaPlayer("Localistation.wav")
@@ -30,6 +25,11 @@ def main():
     pad0_already_pressed = True
 
     def inner_main():
+        # calling firebase getting the ID and printing the result
+        firebase = firebase.FirebaseApplication('https://bowall.firebaseio.com/')
+        result = firebase.get('/checkValue', 'checkID')
+        print(result)
+
         if result == 1:
             location.play()
 
@@ -47,12 +47,14 @@ def main():
                 time.sleep(0.1)
 
                 global result = firebase.get('/checkValue', 'checkID')
+                global restart = 1
 
 
 
-        if restart == 1:
+        if global restart == 1:
             print("looping")
-            function()
+            global restart = 0
+            inner_main()
 
     inner_main();
 main();
