@@ -1,43 +1,47 @@
-# MaxPi 1
-import time
-import board
+#MaxPi 1
+import board, vlc
 from digitalio import DigitalInOut, Direction
-import vlc
-from firebase import firebase
 
-# calling firebase getting the ID and printing the result
-firebase = firebase.FirebaseApplication('https://bowall.firebaseio.com/')
-result = firebase.get('/checkValue', 'checkID')
-print(result)
+#restart als variable
+restart = 1
 
-# importing the Sounds
-location = vlc.MediaPlayer("Localistation.wav")
+#importing Sounds
+location = vlc.MediaPlayer("Localisation.wav")
 Error = vlc.MediaPlayer("Error.wav")
+Celebration = vlc.MediaPlayer("Wishful_Thinking.mp3")
 Success = vlc.MediaPlayer("Success.wav")
-Celebration = vlc.MediaPlayer("Celebration.wav")
 
-# set the GPIO input pins
-pad0_pin = board.D4
+def main():
+    global restart
 
-pad0 = DigitalInOut(pad0_pin)
+    #set GPIO input pins
+    pad0_pin = board.D4
+    pad0 = DigitalInOut(pad0_pin)
+    pad0.direction = Direction.INPUT
+    pad0_already_pressed = True
 
-pad0.direction = Direction.INPUT
+    while True:
+        from firebase import firebase
+        #calling firebase getting the ID and printing the result
+        firebase = firebase.FirebaseApplication('https://bowall.firebaseio.com/')
+        result = firebase.get('/checkValue','checkID')
+        print(result)
 
-pad0_already_pressed = True
+        if resutl == 1:
+            Celebration.play()
 
-while True:
+        if pad0.value and not pad0_already_pressed
+            #playing the sound on touch
+            Celebration.stop()
+            Success.play()
+            print("Pad 0 Pressed")
+            #changing the ID to 2
+            post = firebase.patch('/checkValue', {'checkID': 2})
+            Success.stop()
+        pad0_already_pressed = pad0.value
 
-    if pad0.value and not pad0_already_pressed:
-        # playing the sound on touch
-        Success.play()
-        print("Pad 0 Pressed")
-        # Changing the ID to 1
-        post = firebase.patch('/checkValue', {'checkID': 1})
-    pad0_already_pressed = pad0.value
+main()
 
-    time.sleep(0.1)
 
-    result = firebase.get('/checkValue', 'checkID')
 
-    if result == 1:
-        exit()
+
