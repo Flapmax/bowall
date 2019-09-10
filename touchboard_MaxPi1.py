@@ -30,7 +30,7 @@ def main():
         if resutl == 1:
             Celebration.play()
 
-        if pad0.value and not pad0_already_pressed
+        if pad0.value and not pad0_already_pressed:
             #playing the sound on touch
             Celebration.stop()
             Success.play()
