@@ -27,7 +27,7 @@ def main():
         result = firebase.get('/checkValue','checkID')
         print(result)
 
-        if resutl == 1:
+        if result == 1:
             Celebration.play()
 
         if pad0.value and not pad0_already_pressed:
