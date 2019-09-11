@@ -18,4 +18,6 @@ while True:
     input_state = GPIO.input(26)
     if input_state == False:
         print("Button was pushed!")
-        Success.play()
+        Success.play()#
+        time.sleep(3)
+        Success.stop()
