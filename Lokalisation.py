@@ -16,5 +16,5 @@ while True:
     if input_state == False:
         print("Button was pushed!")
         location.play()
-        time.sleep(1)
+        time.sleep(4)
         location.stop()
