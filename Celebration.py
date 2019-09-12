@@ -9,7 +9,7 @@ GPIO.setup(26, GPIO.IN, pull_up_down=GPIO.PUD_UP) # Set pin 10 to be an input pi
 
 
 #importing Sounds
-Celebration = vlc.MediaPlayer("Success.wav")
+Celebration = vlc.MediaPlayer("Celebration.wav")
 
 while True:
     input_state = GPIO.input(26)
